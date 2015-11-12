@@ -3,3 +3,4 @@
 ##### I mostly played around with other peoples code and I don't have much to show, I also installed atom as my editor of choice. I might do a blog post about the 3 easiest way to write hello world in react! :P Just to contribute with something.
 
 ###### Oh and i also defeated all the superheros!
+![alt tag](http://i66.tinypic.com/2sakm6e.png)
