@@ -4,3 +4,9 @@
 
 ###### Oh and i also defeated all the superheros!
 ![alt tag](http://i66.tinypic.com/2sakm6e.png)
+
+---
+
+#### Comments
+
+[David W](http://blog.krawaller.se/riaguild2015/#/member/krawaller): Haha, that was rather brilliant! :) If you still feel up for that 3-easiest-ways post that would be most welcome! Good luck with clearing the confusion!
