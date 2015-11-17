@@ -104,5 +104,5 @@ In the last example we are still just printing out "Hello World!" and this time 
 </html>
 ```
 1. [hello-world.html](https://github.com/bc222az/Ria-development-2dv607/blob/gh-pages/hello-world/hello-world.html)
-2. [hello-world.html](https://github.com/bc222az/Ria-development-2dv607/blob/gh-pages/hello-world/hello-world2.html)
-3. [hello-world.html](https://github.com/bc222az/Ria-development-2dv607/blob/gh-pages/hello-world/hello-world3.html)
+2. [hello-world2.html](https://github.com/bc222az/Ria-development-2dv607/blob/gh-pages/hello-world/hello-world2.html)
+3. [hello-world3.html](https://github.com/bc222az/Ria-development-2dv607/blob/gh-pages/hello-world/hello-world3.html)
