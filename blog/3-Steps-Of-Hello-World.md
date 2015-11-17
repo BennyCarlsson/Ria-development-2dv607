@@ -4,7 +4,7 @@ So trying to take on React, Redux and React routing resulted in me considering t
 
 ### The most simplest Hello World!
 This is according to me the esiest way to print "Hello World" in React.
-In the head we import what we need to use react, reactdoom and jsx from the web. And in the <scripttype="text/babel"></script> tag all we do is render <h1>Hello World!</h1> in the content div.
+In the head we import what we need to use react, reactdoom and jsx from the web. And in the <scripttype="text/babel"></script> tag all we do is render "Hello World!" in the content div.
 ```
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@ In the head we import what we need to use react, reactdoom and jsx from the web.
 ### My first component!
 Note that this time i downloaded the react library from here https://facebook.github.io/react/index.html however it works the same way as the first example but now you have the library locally.
 
-We are still just printing out "Hello World!", however this time we are doing it by first creating a compononent valled Message and its job is to return <h1>Hello World</h1>.
+We are still just printing out "Hello World!", however this time we are doing it by first creating a compononent valled Message and its job is to return "Hello World".
 ```
 <!DOCTYPE html>
 <html>
