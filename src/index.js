@@ -1,5 +1,8 @@
+/*jshint sub:true*/
 var React = require('react'),
-	ReactDOM = require('react-dom');
+	ReactDOM = require('react-dom'),
+	Firebase = require('firebase'),
+	ReactFire = require('reactfire');
 
 var MainDiv = React.createClass({
 	getInitialState: function(){
@@ -33,13 +36,28 @@ var Comments = React.createClass({
 	}
 });
 var ChatWrapper = React.createClass({
-	addComment: function(comment){
-		var comments = this.state.comments;
-		var updatedComments = comments.concat([comment]);
-		this.setState({comments: updatedComments});
-	},
 	getInitialState: function() {
     	return {comments: []};
+	},
+	componentWillMount: function() {
+		var getComments = [];
+		this.firebaseRef = new Firebase("https://radiant-heat-4485.firebaseio.com/");
+		this.firebaseRef.on("child_added", function(dataSnapshot) {
+			console.log(dataSnapshot.val());
+			var getComment = dataSnapshot.val();
+			getComments.push(getComment.text);
+			this.setState({comments: getComments});
+		}.bind(this));
+  	},
+	addComment: function(comment){
+		//var comments = this.state.comments;
+		//var updatedComments = comments.concat([comment]);
+		//this.setState({comments: updatedComments});
+		this.firebaseRef = new Firebase("https://radiant-heat-4485.firebaseio.com/");
+		this.firebaseRef.push({
+			text: comment
+		});
+		this.setState({text: ""});
 	},
 	render: function(){
 		return(

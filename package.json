@@ -1,15 +1,17 @@
 {
-    "dependencies": {
-      "babelify": "^6.3.0",
-      "react": "^0.14.0-rc1",
-      "react-dom": "^0.14.0-rc1",
-      "watchify": "^3.4.0"
-    },
-    "main": "src/index.js",
-    "scripts": {
-      "start": "watchify src/index.js -v -t babelify -o bundle.js"
-    },
-    "devDependencies": {
-      "grunt": "^0.4.5"
-    }
+  "dependencies": {
+    "babelify": "^6.3.0",
+    "firebase": "^2.3.2",
+    "react": "^0.14.0-rc1",
+    "react-dom": "^0.14.0-rc1",
+    "reactfire": "^0.5.1",
+    "watchify": "^3.4.0"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "start": "watchify src/index.js -v -t babelify -o bundle.js"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
 }
