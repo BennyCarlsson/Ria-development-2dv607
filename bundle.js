@@ -18992,16 +18992,16 @@ var MainDiv = React.createClass({
 		return { message: "" };
 	},
 	onButtonClick: function onButtonClick(e) {
-		this.setState({ message: "Hello Worlds!" });
+		this.setState({ message: "Hello World!" });
 	},
 	render: function render() {
 		return React.createElement(
 			'div',
-			null,
+			{ id: 'divId' },
 			React.createElement(
 				'button',
 				{ onClick: this.onButtonClick },
-				'Hello Worlds!'
+				'Hello World!'
 			),
 			React.createElement(
 				'h1',
@@ -19011,6 +19011,80 @@ var MainDiv = React.createClass({
 		);
 	}
 });
-ReactDOM.render(React.createElement(MainDiv, null), document.getElementById('content'));
+
+var Comments = React.createClass({
+	displayName: 'Comments',
+
+	render: function render() {
+		var comment = this.props.comments.map(function (comment) {
+			return React.createElement(
+				'p',
+				null,
+				comment
+			);
+		});
+		return React.createElement(
+			'div',
+			{ id: 'commentsListDiv' },
+			comment
+		);
+	}
+});
+var ChatWrapper = React.createClass({
+	displayName: 'ChatWrapper',
+
+	addComment: function addComment(comment) {
+		var comments = this.state.comments;
+		var updatedComments = comments.concat([comment]);
+		this.setState({ comments: updatedComments });
+	},
+	getInitialState: function getInitialState() {
+		return { comments: [] };
+	},
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ id: 'chatWrapper' },
+			React.createElement(
+				'div',
+				{ id: 'chatDiv' },
+				React.createElement(
+					'h1',
+					null,
+					'chat'
+				),
+				React.createElement(Comments, { comments: this.state.comments }),
+				React.createElement(FormWrapper, { addComment: this.addComment })
+			)
+		);
+	}
+});
+var FormWrapper = React.createClass({
+	displayName: 'FormWrapper',
+
+	handleSubmit: function handleSubmit(e) {
+		e.preventDefault();
+		var chatInput = this.refs.chatInput.value.trim();
+		if (!chatInput) {
+			return;
+		}
+		this.props.addComment(chatInput);
+		this.refs.chatInput.value = "";
+	},
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ id: 'formWrapper' },
+			React.createElement(
+				'form',
+				{ id: 'chatForm', onSubmit: this.handleSubmit },
+				React.createElement('input', { type: 'text', ref: 'chatInput', placeholder: 'type something..' }),
+				React.createElement('input', { type: 'submit', value: 'send' })
+			)
+		);
+	}
+});
+
+ReactDOM.render(React.createElement(ChatWrapper, null), document.getElementById('content'));
 
 },{"react":157,"react-dom":2}]},{},[158]);
