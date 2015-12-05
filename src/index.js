@@ -5,29 +5,19 @@ var React = require('react'),
 	ReactFire = require('reactfire'),
     niceFilter = require('./helpers/niceFilter');
 
-
-var MainDiv = React.createClass({
-	getInitialState: function(){
-		return {message: ""};
-	},
-	onButtonClick: function(e){
-		this.setState({message: "Hello World!"});
-	},
-	render: function(){
-		return(
-			<div id="divId">
-				<button onClick={this.onButtonClick}>Hello World!</button>
-				<h1>{this.state.message}</h1>
-			</div>
-		);
-	}
-});
-
 var Comments = React.createClass({
 	render: function(){
-		var comment = this.props.comments.map(function(comment){
+		var _this = this;
+		var comment = this.props.comments.map(function(comment, index){
 			return(
-				<p>{comment}</p>
+				<p key={index}>
+					{comment.text}
+					<span
+					onClick={_this.props.deleteComment.bind(null,comment[".key"])}
+					style={{ color: 'red', marginLeft: '10px', cursor: 'pointer' }}>
+						   X
+					</span>
+				</p>
 			);
 		});
 		return(
@@ -42,31 +32,41 @@ var ChatWrapper = React.createClass({
     	return {comments: []};
 	},
 	componentWillMount: function() {
-		var getComments = [];
+
 		this.firebaseRef = new Firebase("https://radiant-heat-4485.firebaseio.com/");
-		this.firebaseRef.on("child_added", function(dataSnapshot) {
-			console.log(dataSnapshot.val());
-			var getComment = dataSnapshot.val();
-			getComments.push(getComment.text);
+			this.firebaseRef.limitToLast(20).on("value", function(dataSnapshot) {
+				var getComments = [];
+				dataSnapshot.forEach(function(childSnapshot){
+					var getComment = childSnapshot.val();
+					getComment[".key"] = childSnapshot.key();
+					getComments.push(getComment);
+				}.bind(this));
 			this.setState({comments: getComments});
 		}.bind(this));
   	},
+	componentWillUnmount: function() {
+   		this.firebaseRef.off();
+ 	},
 	addComment: function(comment){
 		//var comments = this.state.comments;
 		//var updatedComments = comments.concat([comment]);
 		//this.setState({comments: updatedComments});
-		this.firebaseRef = new Firebase("https://radiant-heat-4485.firebaseio.com/");
+		this.firebaseRef =  new Firebase("https://radiant-heat-4485.firebaseio.com/");
 		this.firebaseRef.push({
 			text: niceFilter.sanitizeText(comment)
 		});
 		this.setState({text: ""});
+	},
+	deleteComment: function(key){
+		var firebaseRef = new Firebase("https://radiant-heat-4485.firebaseio.com/");
+   		firebaseRef.child(key).remove();
 	},
 	render: function(){
 		return(
 			<div id="chatWrapper">
 				<div id="chatDiv">
 					<h1>chat</h1>
-					<Comments comments={this.state.comments}/>
+					<Comments deleteComment={this.deleteComment} comments={this.state.comments}/>
 					<FormWrapper addComment={this.addComment}/>
 				</div>
 			</div>
