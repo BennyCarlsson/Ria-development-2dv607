@@ -2,7 +2,9 @@
 var React = require('react'),
 	ReactDOM = require('react-dom'),
 	Firebase = require('firebase'),
-	ReactFire = require('reactfire');
+	ReactFire = require('reactfire'),
+    niceFilter = require('./helpers/niceFilter');
+
 
 var MainDiv = React.createClass({
 	getInitialState: function(){
@@ -55,7 +57,7 @@ var ChatWrapper = React.createClass({
 		//this.setState({comments: updatedComments});
 		this.firebaseRef = new Firebase("https://radiant-heat-4485.firebaseio.com/");
 		this.firebaseRef.push({
-			text: comment
+			text: niceFilter.sanitizeText(comment)
 		});
 		this.setState({text: ""});
 	},
