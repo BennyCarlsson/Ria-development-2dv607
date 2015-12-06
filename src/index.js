@@ -3,7 +3,8 @@ var React = require('react'),
 	ReactDOM = require('react-dom'),
 	Firebase = require('firebase'),
 	ReactFire = require('reactfire'),
-    niceFilter = require('./helpers/niceFilter');
+    niceFilter = require('./helpers/niceFilter'),
+	TimeComponent = require('./Time');
 
 var Comments = React.createClass({
 	render: function(){
@@ -32,7 +33,6 @@ var ChatWrapper = React.createClass({
     	return {comments: []};
 	},
 	componentWillMount: function() {
-
 		this.firebaseRef = new Firebase("https://radiant-heat-4485.firebaseio.com/");
 			this.firebaseRef.limitToLast(20).on("value", function(dataSnapshot) {
 				var getComments = [];
@@ -64,6 +64,7 @@ var ChatWrapper = React.createClass({
 	render: function(){
 		return(
 			<div id="chatWrapper">
+				<TimeComponent/>
 				<div id="chatDiv">
 					<h1>chat</h1>
 					<Comments deleteComment={this.deleteComment} comments={this.state.comments}/>
