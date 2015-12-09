@@ -11,7 +11,7 @@ module.exports = {
 					dispatch({
 						type: C.LOGIN_USER,
 						uid: authData.uid,
-						username: authData.github.displayName || authData.github.username
+						username: authData.facebook.displayName || authData.facebook.username
 					});
 				} else {
 					if (getState().auth.currently !== C.ANONYMOUS){ // log out if not already logged out
@@ -24,7 +24,7 @@ module.exports = {
 	attemptLogin: function(){
 		return function(dispatch,getState){
 			dispatch({type:C.ATTEMPTING_LOGIN});
-			fireRef.authWithOAuthPopup("github", function(error, authData) {
+			fireRef.authWithOAuthPopup("facebook", function(error, authData) {
 				if (error) {
 					dispatch({type:C.DISPLAY_ERROR,error:"Login failed! "+error});
 					dispatch({type:C.LOGOUT});
