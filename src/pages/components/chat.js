@@ -1,6 +1,7 @@
 /*jshint sub:true*/
 var React = require('react'),
 	ReactDOM = require('react-dom'),
+	ReactRedux = require("react-redux"),
 	Firebase = require('firebase'),
     niceFilter = require('../../helpers/niceFilter');
 
@@ -10,7 +11,7 @@ var Comments = React.createClass({
 		var comment = this.props.comments.map(function(comment, index){
 			return(
 				<p key={index}>
-					{comment.text}
+					{comment.username}:  {comment.text}
 					<span
 					onClick={_this.props.deleteComment.bind(null,comment[".key"])}
 					style={{ color: 'red', marginLeft: '10px', cursor: 'pointer' }}>
@@ -46,12 +47,15 @@ var ChatWrapper = React.createClass({
    		this.firebaseRef.off();
  	},
 	addComment: function(comment){
+		var p = this.props;
 		//var comments = this.state.comments;
 		//var updatedComments = comments.concat([comment]);
 		//this.setState({comments: updatedComments});
 		this.firebaseRef =  new Firebase("https://radiant-heat-4485.firebaseio.com/");
 		this.firebaseRef.push({
-			text: niceFilter.sanitizeText(comment)
+			text: niceFilter.sanitizeText(comment),
+			username: p.auth.username,
+			uid: p.auth.uid
 		});
 		this.setState({text: ""});
 	},
@@ -92,4 +96,15 @@ var FormWrapper = React.createClass({
 		);
 	}
 });
-module.exports = ChatWrapper;
+
+var mapStateToProps = function(appState){
+	// This component will have access to `appState.auth` through `this.props.auth`
+	return {auth:appState.auth};
+};
+
+var mapDispatchToProps = function(dispatch){
+	return {
+
+	};
+};
+module.exports = ReactRedux.connect(mapStateToProps,mapDispatchToProps)(ChatWrapper);
