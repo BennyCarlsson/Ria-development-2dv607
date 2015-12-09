@@ -1,7 +1,7 @@
 var React = require('react'),
     ReactRedux = require("react-redux"),
-	C = require("../constants"),
-    actions = require("../actions");
+	C = require("../../constants"),
+    actions = require("../../actions");
 
 var Authentication = React.createClass({
     render: function(){

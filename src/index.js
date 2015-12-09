@@ -3,14 +3,14 @@ var React = require('react'),
 	ReactDOM = require('react-dom'),
 	Provider = require('react-redux').Provider,
 	store = require('./store'),
-	Chat = require('./pages/chat'),
+	Wrapper = require('./pages/wrapper'),
 	actions = require('./actions');
 
 //Chatwrapper from pages/chat.js starts the whole thing..
 //should probably be changed later
 ReactDOM.render(
 	<Provider store={store}>
-		<Chat/>
+		<Wrapper/>
       </Provider>,
   document.getElementById('content')
 );

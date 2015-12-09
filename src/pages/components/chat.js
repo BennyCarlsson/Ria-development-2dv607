@@ -2,9 +2,7 @@
 var React = require('react'),
 	ReactDOM = require('react-dom'),
 	Firebase = require('firebase'),
-    niceFilter = require('../helpers/niceFilter'),
-	TimeComponent = require('./Time'),
-	AuthenticationComponent = require('./authentication');
+    niceFilter = require('../../helpers/niceFilter');
 
 var Comments = React.createClass({
 	render: function(){
@@ -64,8 +62,6 @@ var ChatWrapper = React.createClass({
 	render: function(){
 		return(
 			<div id="chatWrapper">
-				<AuthenticationComponent/>
-				<TimeComponent/>
 				<div id="chatDiv">
 					<h1>chat</h1>
 					<Comments deleteComment={this.deleteComment} comments={this.state.comments}/>
