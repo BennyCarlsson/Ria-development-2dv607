@@ -1,14 +1,15 @@
+var C = require("./constants");
 module.exports = {
     login: function(){
         console.log("login");
-        return dispatch({
+        return {
                     type: C.LOGIN_USER,
-    				uid: authData.uid,
+    				uid: 5,
     				username: "Benny"
-                });
+                };
     },
     logout: function(){
         console.log("logout");
-        return dispatch({type:C.LOGOUT});
+        return {type:C.LOGOUT};
     }
 };

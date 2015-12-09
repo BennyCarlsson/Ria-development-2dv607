@@ -12,7 +12,7 @@ var Authentication = React.createClass({
             case C.LOGGED_IN:
                 return(
                     <div id="logInDiv">
-                        <p onClick={p.logout}>
+                        <p style={{cursor: 'pointer' }} onClick={p.logout}>
                             Logout
                         </p>
                     </div>
@@ -28,8 +28,8 @@ var Authentication = React.createClass({
             default:
                 return(
                     <div id="logInDiv">
-                        <p onClick={p.login}>
-                            Logins Github
+                        <p style={{cursor: 'pointer' }} onClick={p.login}>
+                            Login Github
                         </p>
                     </div>
                 );
@@ -46,8 +46,8 @@ var mapStateToProps = function(appState){
 
 var mapDispatchToProps = function(dispatch){
 	return {
-		attemptLogin: function(){ dispatch(actions.login()); },
-		logoutUser: function(){ dispatch(actions.logout()); }
+		login: function(){ dispatch(actions.login()); },
+		logout: function(){ dispatch(actions.logout()); }
 	};
 };
 
