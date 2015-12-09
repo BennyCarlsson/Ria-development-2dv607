@@ -46,8 +46,8 @@ var mapStateToProps = function(appState){
 
 var mapDispatchToProps = function(dispatch){
 	return {
-		login: function(){ dispatch(actions.login()); },
-		logout: function(){ dispatch(actions.logout()); }
+		login: function(){ dispatch(actions.attemptLogin()); },
+		logout: function(){ dispatch(actions.logoutUser()); }
 	};
 };
 
