@@ -6,8 +6,6 @@ var React = require('react'),
 var Authentication = React.createClass({
     render: function(){
         var p = this.props, auth = p.auth;
-        console.log(p);
-        console.log(auth);
         switch(auth.currently){
             case C.LOGGED_IN:
                 return(
