@@ -2,3 +2,4 @@
 ##Repository for the course RIA-development with javascript 2DV607 at linnaeus university in Kalmar Sweden
 "npm install"
 "npm start"
+"node server.js"

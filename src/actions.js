@@ -1,3 +1,4 @@
+/*jshint sub:true*/
 var C = require("./constants"),
 Firebase = require("firebase"),
 fireRef = new Firebase(C.FIREBASE);
@@ -22,7 +23,9 @@ module.exports = {
 		};
 	},
 	attemptLogin: function(){
+		var that = this;
 		return function(dispatch,getState){
+
 			dispatch({type:C.ATTEMPTING_LOGIN});
 			fireRef.authWithOAuthPopup("facebook", function(error, authData) {
 				if (error) {
@@ -30,6 +33,7 @@ module.exports = {
 					dispatch({type:C.LOGOUT});
 				} else {
 					// no need to do anything here, startListeningToAuth have already made sure that we update on changes
+					that.checkIfUserExistsElseReg(authData);
 				}
 			});
 		};
@@ -39,5 +43,32 @@ module.exports = {
 			dispatch({type:C.LOGOUT}); // don't really need to do this, but nice to get immediate feedback
 			fireRef.unauth();
 		};
+	},
+	regUser: function(authData){
+		var myFireRef = new Firebase(C.FIREBASE+"/users");
+		myFireRef.push({
+			uid: authData.uid,
+			username: authData.facebook.displayName ||
+			authData.facebook.username,
+			online: true,
+			inSchool: false,
+			reggedForSchool: false
+		});
+
+	},
+	checkIfUserExistsElseReg: function(authData){
+		var exists = false;
+		var myFireRef = new Firebase(C.FIREBASE+"/users");
+		myFireRef.once("value",function(snapshot){
+			snapshot.forEach(function(childSnapshot){
+				var user = childSnapshot.val();
+				if(user.uid == authData.uid){
+					exists = true;
+				}
+			});
+			if(!exists){
+				this.regUser(authData);
+			}
+		}.bind(this));
 	}
 };

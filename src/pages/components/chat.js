@@ -32,8 +32,10 @@ var ChatWrapper = React.createClass({
     	return {comments: []};
 	},
 	componentWillMount: function() {
-		this.firebaseRef = new Firebase("https://radiant-heat-4485.firebaseio.com/");
-			this.firebaseRef.limitToLast(20).on("value", function(dataSnapshot) {
+		this.firebaseRef =
+		new Firebase("https://radiant-heat-4485.firebaseio.com/comments");
+			this.firebaseRef.limitToLast(20).on("value",
+			function(dataSnapshot) {
 				var getComments = [];
 				dataSnapshot.forEach(function(childSnapshot){
 					var getComment = childSnapshot.val();
@@ -51,7 +53,8 @@ var ChatWrapper = React.createClass({
 		//var comments = this.state.comments;
 		//var updatedComments = comments.concat([comment]);
 		//this.setState({comments: updatedComments});
-		this.firebaseRef =  new Firebase("https://radiant-heat-4485.firebaseio.com/");
+		this.firebaseRef =
+		new Firebase("https://radiant-heat-4485.firebaseio.com/comments");
 		this.firebaseRef.push({
 			text: niceFilter.sanitizeText(comment),
 			username: p.auth.username,
@@ -60,7 +63,8 @@ var ChatWrapper = React.createClass({
 		this.setState({text: ""});
 	},
 	deleteComment: function(key){
-		var firebaseRef = new Firebase("https://radiant-heat-4485.firebaseio.com/");
+		var firebaseRef =
+		new Firebase("https://radiant-heat-4485.firebaseio.com/comments");
    		firebaseRef.child(key).remove();
 	},
 	render: function(){
@@ -68,7 +72,8 @@ var ChatWrapper = React.createClass({
 			<div id="chatWrapper">
 				<div id="chatDiv">
 					<h1>chat</h1>
-					<Comments deleteComment={this.deleteComment} comments={this.state.comments}/>
+					<Comments deleteComment={this.deleteComment}
+						comments={this.state.comments}/>
 					<FormWrapper addComment={this.addComment}/>
 				</div>
 			</div>
@@ -89,7 +94,8 @@ var FormWrapper = React.createClass({
 		return(
 			<div id="formWrapper">
 				<form id="chatForm" onSubmit={this.handleSubmit}>
-					<input type="text" ref="chatInput" placeholder="type something.."/>
+					<input type="text" ref="chatInput"
+						placeholder="type something.."/>
 					<input type="submit" value="send"/>
 				</form>
 			</div>
@@ -98,7 +104,8 @@ var FormWrapper = React.createClass({
 });
 
 var mapStateToProps = function(appState){
-	// This component will have access to `appState.auth` through `this.props.auth`
+	// This component will have access to
+	//`appState.auth` through `this.props.auth`
 	return {auth:appState.auth};
 };
 
