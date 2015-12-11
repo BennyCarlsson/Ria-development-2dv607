@@ -2,6 +2,7 @@ var React = require('react'),
 	ReactDOM = require('react-dom'),
     ReactRedux = require("react-redux"),
 	TimeComponent = require('./components/time'),
+	UserList = require('./components/userList'),
 	AuthenticationComponent = require('./components/authentication'),
     Chat = require('./components/chat');
 
@@ -12,6 +13,7 @@ var Wrapper = React.createClass({
             <div id="wrapper">
                 <AuthenticationComponent/>
 				<TimeComponent/>
+				<UserList/>
                 {p.auth.uid ? <Chat/> : <p>Login to see chat</p>}
             </div>
         );

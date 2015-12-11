@@ -41,8 +41,8 @@ var Time = React.createClass({
 var MyDate = React.createClass({
     convertDate: function(date){
         return date.getFullYear() + "-" +
-            date.getDate() + "-" +
-            date.getMonth();
+            (date.getMonth()+1)+ "-" +
+            date.getDate();
     },
     render: function(){
         return(

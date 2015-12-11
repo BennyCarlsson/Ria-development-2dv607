@@ -1,4 +1,3 @@
-/*jshint sub:true*/
 var C = require("./constants"),
 Firebase = require("firebase"),
 fireRef = new Firebase(C.FIREBASE);
@@ -12,7 +11,19 @@ module.exports = {
 					dispatch({
 						type: C.LOGIN_USER,
 						uid: authData.uid,
-						username: authData.facebook.displayName || authData.facebook.username
+						username: authData.facebook.displayName ||
+						authData.facebook.username
+					});
+					var presenceRef =
+						new Firebase(C.FIREBASE+"/.info/connected");
+					var userRef =
+						new Firebase(C.FIREBASE+"/presence/" + authData.uid);
+					presenceRef.on("value", function(snap) {
+					  if (snap.val()) {
+					    userRef.set(true);
+					    // Remove ourselves when we disconnect.
+					    userRef.onDisconnect().remove();
+					  }
 					});
 				} else {
 					if (getState().auth.currently !== C.ANONYMOUS){ // log out if not already logged out

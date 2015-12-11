@@ -1,4 +1,3 @@
-/*jshint sub:true*/
 var React = require('react'),
 	ReactDOM = require('react-dom'),
 	ReactRedux = require("react-redux"),
