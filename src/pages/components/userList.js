@@ -9,7 +9,8 @@ var UserList = React.createClass({
     },
     componentWillMount: function(){
         var myFireBase = new Firebase("https://radiant-heat-4485.firebaseio.com/users");
-		myFireBase.on("value", function(snap){
+		myFireBase.orderByChild("online").on("value", function(snap){
+            console.log(snap);
             var newUsers = [];
             snap.forEach(function(childSnap){
                 var newUser = childSnap.val();
@@ -40,14 +41,20 @@ var UserList = React.createClass({
 });
 var Users = React.createClass({
     render: function(){
+        this.props.users.sort(function(x, y) {
+            return (x.status === y.status)? 0 : x.status? -1 : 1;
+        });
         var user = this.props.users.map(function(user, index){
-            if(user.status === true){
+            if(user.inSchool === true){
+                return <li key={index} className="online">(Skolan){user.username}</li>;
+            }
+            else if(user.status === true){
                 return <li key={index} className="online">{user.username}</li>;
             }else{
-                return <li key={index} className="offline">{user.username}</li>;
+                return  <li key={index} className="offline">{user.username}</li>;
             }
-
         });
+
         return(
             <ul>
                 {user}
