@@ -1,5 +1,44 @@
 .offline{color:red}
 .online{color:green}
+.school{color:orange}
+.checkBoxGreen{color:green}
+.checkBoxRed{color:red}
 ul{
     list-style: none;
+}
+#logInDiv{
+    float:right;
+}
+#logInDiv p{
+    font-family: fantasy;
+    font-size: 15px;
+}
+#TimeHeaderId{
+    width: 100%;
+    text-align: center;
+}
+#TimeHeaderId p{
+    display: inline-block;
+    margin:10px;
+    font-family: fantasy;
+    font-size: 42px;
+}
+#schoolList{
+    widh:100%;
+    margin:auto;
+}
+#innerSchoolList{
+    width: 50vw;
+    margin: auto;
+}
+#innerSchoolList ul p{
+    text-align: left;
+    font-family: fantasy;
+    font-size: 20px;
+}
+#innerSchoolList ul{
+    width: 50vh;
+    margin:auto;
+    font-family: fantasy;
+    font-size: 25px;
 }

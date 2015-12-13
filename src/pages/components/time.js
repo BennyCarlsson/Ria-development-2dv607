@@ -63,7 +63,7 @@ var Week = React.createClass({
     render: function(){
 
         return(
-            <p>Week:{this.getWeek()}</p>
+            <p>V.{this.getWeek()}</p>
         );
     }
 });
@@ -71,13 +71,13 @@ var Week = React.createClass({
 var Day = React.createClass({
     convertDay: function(dayNr){
         switch(dayNr){
-            case 0: return "Sunday";
-            case 1: return "Monday";
-            case 2: return "Tuesday";
-            case 3: return "Wednesday";
-            case 4: return "Thursday";
-            case 5: return "Friday";
-            case 6: return "Saturday";
+            case 0: return "Söndag";
+            case 1: return "Måndag";
+            case 2: return "Tisdag";
+            case 3: return "Onsdag";
+            case 4: return "Torsdag";
+            case 5: return "Fredag";
+            case 6: return "Lördag";
             default: return "No Day Today";
         }
     },
@@ -97,13 +97,11 @@ var Clock = React.createClass({
     },
     render: function(){
         return(
-            <div id="clockDiv">
-                <p>
-                    {this.convertTime(this.props.hours)}:
-                    {this.convertTime(this.props.minutes)}:
-                    {this.convertTime(this.props.seconds)}
-                </p>
-            </div>
+            <p>
+                {this.convertTime(this.props.hours)}:
+                {this.convertTime(this.props.minutes)}:
+                {this.convertTime(this.props.seconds)}
+            </p>
         );
     }
 });

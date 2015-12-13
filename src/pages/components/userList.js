@@ -32,37 +32,43 @@ var UserList = React.createClass({
     },
     render: function(){
         return(
-            <div>
-                <p>UserList</p>
-                <Users users={this.state.userList}/>
+            <div id="schoolList">
+                <div id="innerSchoolList">
+
+                    <Users users={this.state.userList}/>
+                </div>
             </div>
         );
     }
 });
 var Users = React.createClass({
     render: function(){
-        this.props.users.sort(function(x, y) {
-            return (x.status === y.status)? 0 : x.status? -1 : 1;
-        });
-        this.props.users.sort(function(x, y) {
-            return (x.inSchool === y.inSchool)? 0 : x.inSchool? -1 : 1;
+        this.props.users.sort(function(x,y){
+            //if same
+            if(y.status === x.status && y.inSchool === x.inSchool){return 0;}
+            //if one is in school and online
+            if(y.inSchool && y.status){return 1;}
+            if(x.inSchool && x.status){return -1;}
+            //if one is in school but not the other
+            if(y.inSchool && !x.inSchool){return 1;}
+            if(!y.inSchool && x.inSchool){return -1;}
         });
         var user = this.props.users.map(function(user, index){
             if(user.inSchool === true && user.status === true){
-                return <li key={index} className="online">(Skolan){user.username}</li>;
+                return <li key={index} className="online"><i className="material-icons checkBoxGreen">location_on</i>{user.username}</li>;
             }
             else if(user.inSchool === true){
-                return <li key={index}>(Skolan){user.username}</li>;
+                return <li key={index} className="school"><i className="material-icons checkBoxGreen">location_on</i>{user.username}</li>;
             }
             else if(user.status === true){
-                return <li key={index} className="online">{user.username}</li>;
+                return <li key={index} className="online"><i className="material-icons checkBoxRed">location_off</i>{user.username}</li>;
             }else{
-                return  <li key={index} className="offline">{user.username}</li>;
+                return  <li key={index} className="offline"><i className="material-icons checkBoxRed">location_off</i>{user.username}</li>;
             }
         });
 
         return(
-            <ul>
+            <ul><p>Vilka är i skolan?</p>
                 {user}
             </ul>
         );
