@@ -44,9 +44,15 @@ var Users = React.createClass({
         this.props.users.sort(function(x, y) {
             return (x.status === y.status)? 0 : x.status? -1 : 1;
         });
+        this.props.users.sort(function(x, y) {
+            return (x.inSchool === y.inSchool)? 0 : x.inSchool? -1 : 1;
+        });
         var user = this.props.users.map(function(user, index){
-            if(user.inSchool === true){
+            if(user.inSchool === true && user.status === true){
                 return <li key={index} className="online">(Skolan){user.username}</li>;
+            }
+            else if(user.inSchool === true){
+                return <li key={index}>(Skolan){user.username}</li>;
             }
             else if(user.status === true){
                 return <li key={index} className="online">{user.username}</li>;
