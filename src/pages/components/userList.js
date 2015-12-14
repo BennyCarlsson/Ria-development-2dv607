@@ -10,7 +10,6 @@ var UserList = React.createClass({
     componentWillMount: function(){
         var myFireBase = new Firebase("https://radiant-heat-4485.firebaseio.com/users");
 		myFireBase.orderByChild("online").on("value", function(snap){
-            console.log(snap);
             var newUsers = [];
             snap.forEach(function(childSnap){
                 var newUser = childSnap.val();
