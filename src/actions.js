@@ -51,6 +51,11 @@ module.exports = {
 	},
 	logoutUser: function(){
 		return function(dispatch,getState){
+			if(getState().auth.uid !== null){
+				var userRef =
+					new Firebase(C.FIREBASE+"/presence/" + getState().auth.uid);
+				userRef.remove();
+			}
 			dispatch({type:C.LOGOUT}); // don't really need to do this, but nice to get immediate feedback
 			fireRef.unauth();
 		};

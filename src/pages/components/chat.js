@@ -53,7 +53,9 @@ var ChatWrapper = React.createClass({
 		//var updatedComments = comments.concat([comment]);
 		//this.setState({comments: updatedComments});
 		this.firebaseRef =
-		new Firebase("https://radiant-heat-4485.firebaseio.com/comments");
+		new Firebase("https://radiant-heat-4485.firebaseio.com/comments/"+p.auth.uid);
+
+		this.firebaseRef.remove();
 		this.firebaseRef.push({
 			text: niceFilter.sanitizeText(comment),
 			username: p.auth.username,
