@@ -10,7 +10,7 @@ var Comments = React.createClass({
 		var comment = this.props.comments.map(function(comment, index){
 			return(
 				<p key={index}>
-					{comment.username}:  {comment.text}
+					 {comment.text} <span className="commentBy">/{comment.username}</span>
 				</p>
 			);
 		});
