@@ -10,12 +10,12 @@ var Comments = React.createClass({
 		var comment = this.props.comments.map(function(comment, index){
 			return(
 				<p key={index}>
-					{comment.username}:  {comment.text}
 					<span
 					onClick={_this.props.deleteComment.bind(null,comment[".key"])}
-					style={{ color: 'red', marginLeft: '10px', cursor: 'pointer' }}>
+					style={{ color: 'red', marginRight: '10px', cursor: 'pointer' }}>
 						   X
 					</span>
+					{comment.username}:  {comment.text}
 				</p>
 			);
 		});
@@ -70,7 +70,7 @@ var ChatWrapper = React.createClass({
 		return(
 			<div id="chatWrapper">
 				<div id="chatDiv">
-					<h1>chat</h1>
+					<p>Chatt</p>
 					<Comments deleteComment={this.deleteComment}
 						comments={this.state.comments}/>
 					<FormWrapper addComment={this.addComment}/>

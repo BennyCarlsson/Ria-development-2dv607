@@ -1,44 +1,57 @@
-.offline{color:red}
-.online{color:green}
-.school{color:orange}
-.checkBoxGreen{color:green}
-.checkBoxRed{color:red}
+.offline{color:#B71C1C}
+.checkBoxRed{color:#B71C1C}
+
+.online{color:#1B5E20}
+.checkBoxGreen{color:#1B5E20}
+
+.school{color:#F57F17}
+body{
+    font-family: 'Exo', sans-serif;
+    font-weight: 800;
+}
 ul{
     list-style: none;
 }
 #logInDiv{
-    float:right;
+    float:left;
 }
 #logInDiv p{
-    font-family: fantasy;
     font-size: 15px;
+    margin-top: 0;
 }
 #TimeHeaderId{
     width: 100%;
-    text-align: center;
+    text-align: right;
 }
 #TimeHeaderId p{
     display: inline-block;
     margin:10px;
-    font-family: fantasy;
-    font-size: 42px;
+    font-size: 20px;
+    color: #212121;
+    margin-top: 0;
 }
 #schoolList{
-    widh:100%;
-    margin:auto;
+    display: inline-block;
+    max-width: 49%;
 }
-#innerSchoolList{
-    width: 50vw;
-    margin: auto;
-}
-#innerSchoolList ul p{
-    text-align: left;
-    font-family: fantasy;
-    font-size: 20px;
+#schoolList p{
+    color:#212121;
 }
 #innerSchoolList ul{
-    width: 50vh;
-    margin:auto;
-    font-family: fantasy;
-    font-size: 25px;
+    margin: 0;
+    padding: 0;
+}
+#innerSchoolList ul p{
+    font-size: 20px;
+
+}
+#innerSchoolList ul{
+
+}
+#chatWrapper{
+    float:right;
+    max-width: 50%;
+}
+#chatDiv{
+    font-size: 20px;
 }
