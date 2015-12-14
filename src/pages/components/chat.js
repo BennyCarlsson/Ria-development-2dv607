@@ -10,11 +10,6 @@ var Comments = React.createClass({
 		var comment = this.props.comments.map(function(comment, index){
 			return(
 				<p key={index}>
-					<span
-					onClick={_this.props.deleteComment.bind(null,comment[".key"])}
-					style={{ color: 'red', marginRight: '10px', cursor: 'pointer' }}>
-						   X
-					</span>
 					{comment.username}:  {comment.text}
 				</p>
 			);
@@ -49,9 +44,6 @@ var ChatWrapper = React.createClass({
  	},
 	addComment: function(comment){
 		var p = this.props;
-		//var comments = this.state.comments;
-		//var updatedComments = comments.concat([comment]);
-		//this.setState({comments: updatedComments});
 		this.firebaseRef =
 		new Firebase("https://radiant-heat-4485.firebaseio.com/comments/"+p.auth.uid);
 
@@ -63,18 +55,11 @@ var ChatWrapper = React.createClass({
 		});
 		this.setState({text: ""});
 	},
-	deleteComment: function(key){
-		var firebaseRef =
-		new Firebase("https://radiant-heat-4485.firebaseio.com/comments");
-   		firebaseRef.child(key).remove();
-	},
 	render: function(){
 		return(
 			<div id="chatWrapper">
 				<div id="chatDiv">
-					<p>Chatt</p>
-					<Comments deleteComment={this.deleteComment}
-						comments={this.state.comments}/>
+					<Comments comments={this.state.comments}/>
 					<FormWrapper addComment={this.addComment}/>
 				</div>
 			</div>
