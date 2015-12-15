@@ -8,7 +8,7 @@ var Comments = React.createClass({
 	render: function(){
 		var _this = this;
 		this.props.comments.sort(function(a,b){
-			return a.timeStamp > b.timeStamp ? -1 : a.timeStamp < b.timeStamp ? 1 : 0;
+			return a.timeStamp - b.timeStamp;
 		});
 		var comment = this.props.comments.map(function(comment, index){
 			return(
