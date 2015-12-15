@@ -53,7 +53,7 @@ var ChatWrapper = React.createClass({
 
 		this.firebaseRef.remove();
 		this.firebaseRef.set({
-			timeStamp: new Date().toString(),
+			timeStamp: Firebase.ServerValue.TIMESTAMP,
 			text: niceFilter.sanitizeText(comment),
 			username: p.auth.username,
 			uid: p.auth.uid
