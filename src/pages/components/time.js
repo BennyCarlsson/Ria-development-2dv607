@@ -27,7 +27,7 @@ var Time = React.createClass({
     },
     render: function(){
         return(
-            <div id="TimeHeaderId">
+            <div id="TimeHeaderId" className="col-md-8">
                 <MyDate currentDate={this.state.currentDate}/>
                 <Week/>
                 <Day day={this.state.day}/>
@@ -46,7 +46,7 @@ var MyDate = React.createClass({
     },
     render: function(){
         return(
-            <p>{this.convertDate(this.props.currentDate)}</p>
+            <span>{this.convertDate(this.props.currentDate)}</span>
         );
     }
 });
@@ -63,7 +63,7 @@ var Week = React.createClass({
     render: function(){
 
         return(
-            <p>V.{this.getWeek()}</p>
+            <span>V.{this.getWeek()}</span>
         );
     }
 });
@@ -83,7 +83,7 @@ var Day = React.createClass({
     },
     render: function(){
         return(
-            <p>{this.convertDay(this.props.day)}</p>
+            <span>{this.convertDay(this.props.day)}</span>
         );
     }
 });
@@ -97,11 +97,11 @@ var Clock = React.createClass({
     },
     render: function(){
         return(
-            <p>
+            <span>
                 {this.convertTime(this.props.hours)}:
                 {this.convertTime(this.props.minutes)}:
                 {this.convertTime(this.props.seconds)}
-            </p>
+            </span>
         );
     }
 });

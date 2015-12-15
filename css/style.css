@@ -13,27 +13,20 @@ ul{
     list-style: none;
 }
 #logInDiv{
-    float:left;
+
 }
 #logInDiv p{
     font-size: 15px;
-    margin-top: 0;
 }
 #TimeHeaderId{
-    width: 100%;
     text-align: right;
 }
 #TimeHeaderId p{
-    display: inline-block;
-    margin:10px;
     font-size: 20px;
     color: #212121;
-    margin-top: 0;
 }
 #schoolList{
-    display: inline-block;
-    max-width: 49%;
-    position: fixed;
+
 }
 #schoolList p{
     color:#212121;
@@ -53,14 +46,10 @@ ul{
     max-width: 20vw;
 }
 #chatWrapper{
-    display: inline-block;
-    max-width: 50%;
-    overflow-x: hidden;
-    padding-left: 24%;
-    margin: auto;
+
 }
 #chatDiv{
-    font-size: 20px;
+
 }
 .commentBy{
     font-size: 8px;

@@ -31,9 +31,8 @@ var UserList = React.createClass({
     },
     render: function(){
         return(
-            <div id="schoolList">
+            <div id="schoolList" className="col-md-4">
                 <div id="innerSchoolList">
-
                     <Users users={this.state.userList}/>
                 </div>
             </div>

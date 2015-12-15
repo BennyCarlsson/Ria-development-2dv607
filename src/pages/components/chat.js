@@ -2,7 +2,10 @@ var React = require('react'),
 	ReactDOM = require('react-dom'),
 	ReactRedux = require("react-redux"),
 	Firebase = require('firebase'),
-    niceFilter = require('../../helpers/niceFilter');
+	Bootstrap = require('react-bootstrap'),
+    niceFilter = require('../../helpers/niceFilter'),
+	Button = require('react-bootstrap').Button,
+	Input = require('react-bootstrap').Input;
 
 var Comments = React.createClass({
 	render: function(){
@@ -12,8 +15,8 @@ var Comments = React.createClass({
 		});
 		var comment = this.props.comments.map(function(comment, index){
 			return(
-				<div className="chatBubble arrow_box">
-					<p key={index}>
+				<div key={index} className="chatBubble">
+					<p>
 						 {comment.text} <span className="commentBy">/{comment.username}</span>
 					</p>
 				</div>
@@ -64,7 +67,7 @@ var ChatWrapper = React.createClass({
 	},
 	render: function(){
 		return(
-			<div id="chatWrapper">
+			<div id="chatWrapper"  className="col-md-4">
 				<div id="chatDiv">
 					<Comments comments={this.state.comments}/>
 					<FormWrapper addComment={this.addComment}/>
@@ -74,22 +77,37 @@ var ChatWrapper = React.createClass({
 	}
 });
 var FormWrapper = React.createClass({
+	getInitialState: function() {
+    	return {value: ""};
+	},
+	handleChange: function() {
+	    this.setState({
+	      value: this.refs.chatInput.getValue()
+	    });
+  	},
 	handleSubmit: function(e){
 		e.preventDefault();
-		var chatInput = this.refs.chatInput.value.trim();
+		var chatInput = this.refs.chatInput.getValue().trim();
 		if(!chatInput){
 			return;
 		}
 		this.props.addComment(chatInput);
-		this.refs.chatInput.value = "";
+		this.clearInput();
+		//this.refs.chatInput.getDOMNode.value = "";
 	},
+	clearInput: function() {
+    	this.setState({ value: "" });
+  	},
 	render: function(){
 		return(
 			<div id="formWrapper">
-				<form id="chatForm" onSubmit={this.handleSubmit}>
-					<input type="text" ref="chatInput"
-						placeholder="type something.."/>
-					<input type="submit" value="send"/>
+				<form id="chatForm" className="form-inline" onSubmit={this.handleSubmit}>
+					<Input type="text"
+						ref="chatInput"
+						value={this.state.value}
+						placeholder="type something.."
+						onChange={this.handleChange}/>
+					<Button className="btn btn-default pull-right" value="send" type="submit">Skicka</Button>
 				</form>
 			</div>
 		);

@@ -9,7 +9,7 @@ var Authentication = React.createClass({
         switch(auth.currently){
             case C.LOGGED_IN:
                 return(
-                    <div id="logInDiv">
+                    <div id="logInDiv" className="col-md-4">
                         <p style={{cursor: 'pointer' }} onClick={p.logout}>
                             Logout
                         </p>

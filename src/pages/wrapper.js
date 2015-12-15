@@ -10,11 +10,15 @@ var Wrapper = React.createClass({
     render: function(){
         var p = this.props;
         return(
-            <div id="wrapper">
-                <AuthenticationComponent/>
-				<TimeComponent/>
-				<UserList/>
-                {p.auth.uid ? <Chat/> : <p>Login to see chat</p>}
+            <div className="container-fluid">
+				<div className="row">
+	                <AuthenticationComponent/>
+					<TimeComponent/>
+				</div>
+				<div className="row">
+					<UserList/>
+                	{p.auth.uid ? <Chat/> : <p>Login to see chat</p>}
+				</div>
             </div>
         );
     }
