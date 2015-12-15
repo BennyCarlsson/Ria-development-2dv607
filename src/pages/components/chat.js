@@ -12,9 +12,11 @@ var Comments = React.createClass({
 		});
 		var comment = this.props.comments.map(function(comment, index){
 			return(
-				<p key={index}>
-					 {comment.text} <span className="commentBy">/{comment.username}</span>
-				</p>
+				<div className="chatBubble arrow_box">
+					<p key={index}>
+						 {comment.text} <span className="commentBy">/{comment.username}</span>
+					</p>
+				</div>
 			);
 		});
 		return(

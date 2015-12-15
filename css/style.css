@@ -33,6 +33,7 @@ ul{
 #schoolList{
     display: inline-block;
     max-width: 49%;
+    position: fixed;
 }
 #schoolList p{
     color:#212121;
@@ -45,16 +46,38 @@ ul{
     font-size: 20px;
 
 }
-#innerSchoolList ul{
-
+#innerSchoolList li{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    max-width: 20vw;
 }
 #chatWrapper{
-    float:right;
+    display: inline-block;
     max-width: 50%;
+    overflow-x: hidden;
+    padding-left: 24%;
+    margin: auto;
 }
 #chatDiv{
     font-size: 20px;
 }
 .commentBy{
-    font-size: 10px;
+    font-size: 8px;
+    position: absolute;
+    bottom: 0;
+    right: 0
+}
+#formWrapper{
+    position: fixed;
+    bottom: 70px;
+    right: 224px;
+}
+.chatBubble{
+    width: 500px;
+    max-height: 285px;
+    overflow: auto;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    position: relative;
 }
