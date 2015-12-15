@@ -66,7 +66,7 @@ module.exports = {
 			uid: authData.uid,
 			username: authData.facebook.displayName ||
 			authData.facebook.username,
-			online: true,
+			timeStamp: "",
 			inSchool: false,
 			reggedForSchool: false
 		});

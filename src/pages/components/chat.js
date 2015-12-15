@@ -7,6 +7,9 @@ var React = require('react'),
 var Comments = React.createClass({
 	render: function(){
 		var _this = this;
+		this.props.comments.sort(function(a,b){
+			return a.timeStamp > b.timeStamp ? -1 : a.timeStamp < b.timeStamp ? 1 : 0;
+		});
 		var comment = this.props.comments.map(function(comment, index){
 			return(
 				<p key={index}>
@@ -33,6 +36,7 @@ var ChatWrapper = React.createClass({
 				var getComments = [];
 				dataSnapshot.forEach(function(childSnapshot){
 					var getComment = childSnapshot.val();
+					getComment.timeStamp = new Date(getComment.timeStamp);
 					getComment[".key"] = childSnapshot.key();
 					getComments.push(getComment);
 				}.bind(this));
@@ -49,6 +53,7 @@ var ChatWrapper = React.createClass({
 
 		this.firebaseRef.remove();
 		this.firebaseRef.set({
+			timeStamp: new Date().toString(),
 			text: niceFilter.sanitizeText(comment),
 			username: p.auth.username,
 			uid: p.auth.uid
