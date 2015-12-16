@@ -24,7 +24,7 @@ var Comments = React.createClass({
 		});
 		return(
 			<div id="commentsListDiv">
-				{comment}
+				{this.props.comments.length > 0 ? comment : <div className="mdl-spinner mdl-js-spinner is-active"></div>}
 			</div>
 		);
 	}

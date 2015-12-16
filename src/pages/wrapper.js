@@ -9,6 +9,7 @@ var React = require('react'),
 var Wrapper = React.createClass({
     render: function(){
         var p = this.props;
+		console.log(p);
         return(
             <div className="container-fluid">
 				<div className="row">

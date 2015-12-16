@@ -41,6 +41,8 @@ var UserList = React.createClass({
 });
 var Users = React.createClass({
     render: function(){
+        var p = this.props;
+
         this.props.users.sort(function(x,y){
             //if same
             if(y.status === x.status && y.inSchool === x.inSchool){return 0;}
@@ -50,6 +52,11 @@ var Users = React.createClass({
             //if one is in school but not the other
             if(y.inSchool && !x.inSchool){return 1;}
             if(!y.inSchool && x.inSchool){return -1;}
+            //if both are online
+            if(y.status && xstatus){return 0;}
+            //if one is online but note the other
+            if(y.status && !x.status){return 1;}
+            if(!y.status && x.status){return -1;}
         });
         var user = this.props.users.map(function(user, index){
             if(user.inSchool === true && user.status === true){
@@ -64,10 +71,9 @@ var Users = React.createClass({
                 return  <li key={index} className="offline"><i className="material-icons checkBoxRed">location_off</i>{user.username}</li>;
             }
         });
-
         return(
             <ul><p>Vilka är i skolan?</p>
-                {user}
+                {p.users.length > 0 ? user : <div className="mdl-spinner mdl-js-spinner is-active"></div>}
             </ul>
         );
     }
