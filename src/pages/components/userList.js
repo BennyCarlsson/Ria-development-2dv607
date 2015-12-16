@@ -59,16 +59,21 @@ var Users = React.createClass({
             if(!y.status && x.status){return -1;}
         });
         var user = this.props.users.map(function(user, index){
+            var time = timeDifference(new Date(),new Date(user.timeStamp));
             if(user.inSchool === true && user.status === true){
-                return <li key={index} className="online"><i className="material-icons checkBoxGreen">location_on</i>{user.username}</li>;
+                return <li key={index} className="online"><i className="material-icons checkBoxGreen">location_on</i>
+                <span title={"Kom "+time}>{user.username}</span></li>;
             }
             else if(user.inSchool === true){
-                return <li key={index} className="school"><i className="material-icons checkBoxGreen">location_on</i>{user.username}</li>;
+                return <li key={index} className="school"><i className="material-icons checkBoxGreen">location_on</i>
+                <span title={"Kom "+time}>{user.username}</span></li>;
             }
             else if(user.status === true){
-                return <li key={index} className="online"><i className="material-icons checkBoxRed">location_off</i>{user.username}</li>;
+                return <li key={index} className="online"><i className="material-icons checkBoxRed">location_off</i>
+                <span title={"Gick "+time}>{user.username}</span></li>;
             }else{
-                return  <li key={index} className="offline"><i className="material-icons checkBoxRed">location_off</i>{user.username}</li>;
+                return  <li key={index} className="offline"><i className="material-icons checkBoxRed">location_off</i>
+                <span title={"Gick "+time}>{user.username}</span></li>;
             }
         });
         return(
@@ -78,6 +83,39 @@ var Users = React.createClass({
         );
     }
 });
+
+//http://stackoverflow.com/questions/6108819/javascript-timestamp-to-relative-time-eg-2-seconds-ago-one-week-ago-etc-best
+function timeDifference(current, previous) {
+
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+
+    var elapsed = current - previous;
+
+    if (elapsed < msPerMinute) {
+         return Math.round(elapsed/1000) + ' sekunder sedan';
+    }
+
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' minuter sedan';
+    }
+
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' timmar sedan';
+    }
+
+    else if (elapsed < msPerMonth) {
+        return  Math.round(elapsed/msPerDay) + ' dagar sedan';
+    }
+
+    else if (elapsed < msPerYear) {
+        return  Math.round(elapsed/msPerMonth) + ' månader sedan';
+    }
+    else{return 'aldrig pingat';}
+}
 
 // now we connect the component to the Redux store:
 var mapStateToProps = function(appState){
