@@ -37,19 +37,27 @@ ul{
 }
 #innerSchoolList ul p{
     font-size: 20px;
-
 }
 #innerSchoolList li{
     overflow:hidden;
     white-space:nowrap;
     text-overflow: ellipsis;
-    max-width: 20vw;
 }
 #chatWrapper{
 
 }
 #chatDiv{
 
+}
+#chatForm input{
+    width: 100%;
+    border:none;
+}
+#chatform button{
+    width: 20%;
+}
+.form-group{
+    width: 80%;
 }
 .commentBy{
     font-size: 8px;
@@ -58,12 +66,9 @@ ul{
     right: 0
 }
 #formWrapper{
-    position: fixed;
-    bottom: 70px;
-    right: 224px;
+    width: 100%;
 }
 .chatBubble{
-    width: 500px;
     max-height: 285px;
     overflow: auto;
     border: 1px solid black;
