@@ -6,8 +6,7 @@
 
 .school{color:#F57F17}
 body{
-    font-family: 'Exo', sans-serif;
-    font-weight: 800;
+
 }
 ul{
     list-style: none;
@@ -20,6 +19,7 @@ ul{
 }
 #TimeHeaderId{
     text-align: right;
+    float:right;
 }
 #TimeHeaderId p{
     font-size: 20px;
@@ -50,11 +50,9 @@ ul{
 
 }
 #chatForm input{
-    width: 100%;
-    border:none;
+
 }
 #chatform button{
-    width: 20%;
 }
 .form-group{
     width: 80%;
@@ -63,15 +61,29 @@ ul{
     font-size: 8px;
     position: absolute;
     bottom: 0;
-    right: 0
+    right: 3px;
 }
 #formWrapper{
     width: 100%;
 }
 .chatBubble{
     max-height: 285px;
-    overflow: auto;
-    border: 1px solid black;
+    max-width: 512px;
     margin-bottom: 5px;
-    position: relative;
+}
+.demo-card-wide.mdl-card {
+  width: 512px;
+  min-height: 0;
+  overflow-y: auto;
+}
+#chatTitle{
+    font-size:20px;
+    text-align: center;
+}
+.mdl-card{
+    min-height: 100px;
+    background-color: #FFCA28;
+}
+.timeClass{
+    margin-left: 5px;
 }

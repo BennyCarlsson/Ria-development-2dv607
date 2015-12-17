@@ -11,12 +11,12 @@ var Wrapper = React.createClass({
         var p = this.props;
 		console.log(p);
         return(
-            <div className="container-fluid">
-				<div className="row">
+            <div className="container">
+				<div className="mdl-grid">
 	                <AuthenticationComponent/>
 					<TimeComponent/>
 				</div>
-				<div className="row">
+				<div className="mdl-grid">
 					<UserList/>
                 	{p.auth.uid ? <Chat/> : <p>Login to see chat</p>}
 				</div>

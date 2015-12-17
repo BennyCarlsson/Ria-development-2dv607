@@ -31,7 +31,7 @@ var UserList = React.createClass({
     },
     render: function(){
         return(
-            <div id="schoolList" className="col-md-4">
+            <div id="schoolList" className="mdl-cell mdl-cell--4-col">
                 <div id="innerSchoolList">
                     <Users users={this.state.userList}/>
                 </div>
@@ -62,7 +62,9 @@ var Users = React.createClass({
             var time = timeDifference(new Date(),new Date(user.timeStamp));
             if(user.inSchool === true && user.status === true){
                 return <li key={index} className="online"><i className="material-icons checkBoxGreen">location_on</i>
-                <span title={"Kom "+time}>{user.username}</span></li>;
+                <span title={"Kom "+time}>{user.username}</span>
+                </li>;
+
             }
             else if(user.inSchool === true){
                 return <li key={index} className="school"><i className="material-icons checkBoxGreen">location_on</i>

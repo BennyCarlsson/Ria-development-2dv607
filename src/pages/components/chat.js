@@ -16,7 +16,7 @@ var ChatWrapper = React.createClass({
 	componentWillMount: function() {
 		this.firebaseRef =
 		new Firebase("https://radiant-heat-4485.firebaseio.com/comments");
-			this.firebaseRef.limitToLast(20).on("value",
+			this.firebaseRef.limitToLast(25).on("value",
 			function(dataSnapshot) {
 				var getComments = [];
 				dataSnapshot.forEach(function(childSnapshot){
@@ -47,8 +47,9 @@ var ChatWrapper = React.createClass({
 	},
 	render: function(){
 		return(
-			<div id="chatWrapper"  className="col-md-4">
+			<div id="chatWrapper"  className="mdl-cell mdl-cell--6-col">
 				<div id="chatDiv">
+					<p id="chatTitle">Meddelanden</p>
 					<Comments comments={this.state.comments}/>
 					<FormWrapper addComment={this.addComment}/>
 				</div>
