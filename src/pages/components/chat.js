@@ -5,30 +5,10 @@ var React = require('react'),
 	Bootstrap = require('react-bootstrap'),
     niceFilter = require('../../helpers/niceFilter'),
 	Button = require('react-bootstrap').Button,
-	Input = require('react-bootstrap').Input;
+	Input = require('react-bootstrap').Input,
+	Comments = require('./comments'),
+	FormWrapper = require('./formwrapper');
 
-var Comments = React.createClass({
-	render: function(){
-		var _this = this;
-		this.props.comments.sort(function(a,b){
-			return a.timeStamp - b.timeStamp;
-		});
-		var comment = this.props.comments.map(function(comment, index){
-			return(
-				<div key={index} className="chatBubble">
-					<p>
-						 {comment.text} <span className="commentBy">/{comment.username}</span>
-					</p>
-				</div>
-			);
-		});
-		return(
-			<div id="commentsListDiv">
-				{this.props.comments.length > 0 ? comment : <div className="mdl-spinner mdl-js-spinner is-active"></div>}
-			</div>
-		);
-	}
-});
 var ChatWrapper = React.createClass({
 	getInitialState: function() {
     	return {comments: []};
@@ -72,43 +52,6 @@ var ChatWrapper = React.createClass({
 					<Comments comments={this.state.comments}/>
 					<FormWrapper addComment={this.addComment}/>
 				</div>
-			</div>
-		);
-	}
-});
-var FormWrapper = React.createClass({
-	getInitialState: function() {
-    	return {value: ""};
-	},
-	handleChange: function() {
-	    this.setState({
-	      value: this.refs.chatInput.getValue()
-	    });
-  	},
-	handleSubmit: function(e){
-		e.preventDefault();
-		var chatInput = this.refs.chatInput.getValue().trim();
-		if(!chatInput){
-			return;
-		}
-		this.props.addComment(chatInput);
-		this.clearInput();
-		//this.refs.chatInput.getDOMNode.value = "";
-	},
-	clearInput: function() {
-    	this.setState({ value: "" });
-  	},
-	render: function(){
-		return(
-			<div id="formWrapper">
-				<form id="chatForm" className="form-inline" onSubmit={this.handleSubmit}>
-					<Input type="text"
-						ref="chatInput"
-						value={this.state.value}
-						placeholder="type something.."
-						onChange={this.handleChange}/>
-					<Button className="btn btn-default pull-right" value="send" type="submit">Skicka</Button>
-				</form>
 			</div>
 		);
 	}

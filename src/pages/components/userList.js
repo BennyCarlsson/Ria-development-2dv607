@@ -53,7 +53,7 @@ var Users = React.createClass({
             if(y.inSchool && !x.inSchool){return 1;}
             if(!y.inSchool && x.inSchool){return -1;}
             //if both are online
-            if(y.status && xstatus){return 0;}
+            if(y.status && x.status){return 0;}
             //if one is online but note the other
             if(y.status && !x.status){return 1;}
             if(!y.status && x.status){return -1;}
