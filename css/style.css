@@ -12,14 +12,13 @@ ul{
     list-style: none;
 }
 #logInDiv{
-
+    text-align: right;
 }
 #logInDiv p{
     font-size: 15px;
 }
 #TimeHeaderId{
-    text-align: right;
-    float:right;
+
 }
 #TimeHeaderId p{
     font-size: 20px;
@@ -86,4 +85,20 @@ ul{
 }
 .timeClass{
     margin-left: 5px;
+}
+.mdl-card__supporting-text{
+    color:rgba(0, 0, 0, 0.80);
+}
+#p2{
+    float: right;
+    width:100px;
+    float: right;
+    width: 100px;
+    margin-top: 14px;
+    margin-right: 15px;
+}
+#loginToSeMessagesMsg{
+    height: 50px;
+    margin-top: 7%;
+    margin-left: 13%;
 }

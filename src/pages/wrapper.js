@@ -13,12 +13,19 @@ var Wrapper = React.createClass({
         return(
             <div className="container">
 				<div className="mdl-grid">
-	                <AuthenticationComponent/>
 					<TimeComponent/>
+	                <AuthenticationComponent/>
 				</div>
 				<div className="mdl-grid">
 					<UserList/>
-                	{p.auth.uid ? <Chat/> : <p>Login to see chat</p>}
+                	{p.auth.uid ?
+						<Chat/> :
+						<div id="loginToSeMessagesMsg"className="chatBubble mdl-cell mdl-cell--2-col mdl-card mdl-shadow--2dp">
+							<div className="mdl-card__supporting-text">
+								 Logga in för att <br/> se meddelanden <span className="commentBy">/Benny</span>
+							</div>
+						</div>
+					}
 				</div>
             </div>
         );

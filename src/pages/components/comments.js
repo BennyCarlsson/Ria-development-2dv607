@@ -9,7 +9,6 @@ var Comments = function(props){
 				<div key={index} className="chatBubble mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp">
 					<div className="mdl-card__supporting-text">
 						 {comment.text} <span className="commentBy">/{comment.username}</span>
-
 					</div>
 				</div>
 			);
