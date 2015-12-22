@@ -6,7 +6,6 @@ var React = require('react'),
 var Authentication = React.createClass({
     componentDidMount: function(){
         componentHandler.upgradeDom();
-
     },
     componentDidUpdate: function(){
         componentHandler.upgradeDom();

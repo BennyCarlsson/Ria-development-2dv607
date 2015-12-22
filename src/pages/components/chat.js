@@ -1,63 +1,26 @@
 var React = require('react'),
 	ReactDOM = require('react-dom'),
 	ReactRedux = require("react-redux"),
-	Firebase = require('firebase'),
-	Bootstrap = require('react-bootstrap'),
-    niceFilter = require('../../helpers/niceFilter'),
-	Button = require('react-bootstrap').Button,
-	Input = require('react-bootstrap').Input,
+	actions = require("../../actions"),
 	Comments = require('./comments'),
 	FormWrapper = require('./formwrapper');
 
 var ChatWrapper = React.createClass({
-	getInitialState: function() {
-    	return {comments: []};
-	},
 	componentDidMount: function(){
         componentHandler.upgradeDom();
-
     },
     componentDidUpdate: function(){
         componentHandler.upgradeDom();
     },
-	componentWillMount: function() {
-		this.firebaseRef =
-		new Firebase("https://radiant-heat-4485.firebaseio.com/comments");
-			this.firebaseRef.limitToLast(25).on("value",
-			function(dataSnapshot) {
-				var getComments = [];
-				dataSnapshot.forEach(function(childSnapshot){
-					var getComment = childSnapshot.val();
-					getComment.timeStamp = new Date(getComment.timeStamp);
-					getComment[".key"] = childSnapshot.key();
-					getComments.push(getComment);
-				}.bind(this));
-			this.setState({comments: getComments});
-		}.bind(this));
-  	},
-	componentWillUnmount: function() {
-   		this.firebaseRef.off();
- 	},
 	addComment: function(comment){
-		var p = this.props;
-		this.firebaseRef =
-		new Firebase("https://radiant-heat-4485.firebaseio.com/comments/"+p.auth.uid);
-
-		this.firebaseRef.remove();
-		this.firebaseRef.set({
-			timeStamp: Firebase.ServerValue.TIMESTAMP,
-			text: niceFilter.sanitizeText(comment),
-			username: p.auth.username,
-			uid: p.auth.uid
-		});
-		this.setState({text: ""});
+		this.props.newComment(comment,this.props.auth);
 	},
 	render: function(){
 		return(
 			<div id="chatWrapper"  className="mdl-cell mdl-cell--6-col">
 				<div id="chatDiv">
-					<Comments comments={this.state.comments}/>
-					{this.state.comments.length > 0 ? <FormWrapper addComment={this.addComment}/> : ""}
+					<Comments comments={this.props.chat.comments}/>
+					{this.props.chat.receivedComments ? <FormWrapper addComment={this.addComment}/> : ""}
 				</div>
 			</div>
 		);
@@ -67,12 +30,12 @@ var ChatWrapper = React.createClass({
 var mapStateToProps = function(appState){
 	// This component will have access to
 	//`appState.auth` through `this.props.auth`
-	return {auth:appState.auth};
+	return {chat:appState.chat, auth:appState.auth};
 };
 
 var mapDispatchToProps = function(dispatch){
 	return {
-
+		newComment: function(comment,auth){ dispatch(actions.newComment(comment,auth)); }
 	};
 };
 module.exports = ReactRedux.connect(mapStateToProps,mapDispatchToProps)(ChatWrapper);

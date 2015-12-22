@@ -6,5 +6,9 @@ module.exports = {
 		currently: C.ANONYMOUS,
 		username: null,
 		uid: null
+	},
+	chat: {
+		comments: [],
+		receivedComments: false
 	}
 };
