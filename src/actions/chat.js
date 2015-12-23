@@ -1,4 +1,4 @@
-var C = require("./constants"),
+var C = require("../constants"),
 Firebase = require("firebase");
 
 module.exports = {
@@ -31,5 +31,13 @@ module.exports = {
 				uid: auth.uid
 			});
 		};
-	}
+	},
+    deleteComment: function(uid){
+        return function(dispatch,getState){
+            var firebaseRef =
+    		new Firebase(C.FIREBASE+"/comments/");
+    		firebaseRef.child(uid).remove();
+            console.log("delete"+uid);
+        };
+    }
 };

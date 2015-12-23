@@ -1,4 +1,4 @@
-var C = require("./constants"),
+var C = require("../constants"),
 Firebase = require("firebase"),
 fireRef = new Firebase(C.FIREBASE);
 

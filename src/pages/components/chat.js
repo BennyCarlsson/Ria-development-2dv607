@@ -19,7 +19,7 @@ var ChatWrapper = React.createClass({
 		return(
 			<div id="chatWrapper"  className="mdl-cell mdl-cell--6-col">
 				<div id="chatDiv">
-					<Comments comments={this.props.chat.comments}/>
+					<Comments chat={this.props.chat} auth={this.props.auth} delete={this.props.deleteComment}/>
 					{this.props.chat.receivedComments ? <FormWrapper addComment={this.addComment}/> : ""}
 				</div>
 			</div>
@@ -29,13 +29,14 @@ var ChatWrapper = React.createClass({
 
 var mapStateToProps = function(appState){
 	// This component will have access to
-	//`appState.auth` through `this.props.auth`
+	//appState.auth` through `this.props.auth`
 	return {chat:appState.chat, auth:appState.auth};
 };
 
 var mapDispatchToProps = function(dispatch){
 	return {
-		newComment: function(comment,auth){ dispatch(actions.newComment(comment,auth)); }
+		newComment: function(comment,auth){ dispatch(actions.newComment(comment,auth)); },
+		deleteComment: function(uid){ dispatch(actions.deleteComment(uid)); }
 	};
 };
 module.exports = ReactRedux.connect(mapStateToProps,mapDispatchToProps)(ChatWrapper);

@@ -34,7 +34,7 @@ var Authentication = React.createClass({
                     <div id="logInDiv" className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                         <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"  onClick={p.login}>
                             Login With Facebook
-                        </button>
+                        </button>git
                     </div>
                 );
         }

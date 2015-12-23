@@ -102,3 +102,10 @@ ul{
     margin-top: 7%;
     margin-left: 13%;
 }
+.deleteButton{
+    font-size: 11px;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    cursor: pointer;
+}
