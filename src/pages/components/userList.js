@@ -42,7 +42,6 @@ var UserList = React.createClass({
 var Users = React.createClass({
     render: function(){
         var p = this.props;
-
         this.props.users.sort(function(x,y){
             //if same
             if(y.status === x.status && y.inSchool === x.inSchool){return 0;}
@@ -60,6 +59,9 @@ var Users = React.createClass({
         });
         var user = this.props.users.map(function(user, index){
             var time = timeDifference(new Date(),new Date(user.timeStamp));
+            if(!user.reggedForSchool){
+                return "";
+            }
             if(user.inSchool === true && user.status === true){
                 return <li key={index} className="online"><i className="material-icons checkBoxGreen">location_on</i>
                 <span title={"Kom "+time}>{user.username}</span>
