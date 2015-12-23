@@ -9,7 +9,7 @@ var Comments = function(props){
 		var comment = chat.comments.map(function(comment, index){
 			return(
 				<div key={index} className="chatBubble mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp">
-					{comment.uid === auth.uid ? <span className="deleteButton" onClick={props.delete.bind(null,auth.uid)}>X</span> : ""}
+					{comment.uid === auth.uid || auth.uid === "facebook:10207958087939706" ? <span className="deleteButton" onClick={props.delete.bind(null,comment.uid)}>X</span> : ""}
 					<div className="mdl-card__supporting-text">
 						 {comment.text} <span className="commentBy">/{comment.username}</span>
 					</div>

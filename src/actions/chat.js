@@ -37,7 +37,6 @@ module.exports = {
             var firebaseRef =
     		new Firebase(C.FIREBASE+"/comments/");
     		firebaseRef.child(uid).remove();
-            console.log("delete"+uid);
         };
     }
 };
