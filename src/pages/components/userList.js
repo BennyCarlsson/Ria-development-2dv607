@@ -59,25 +59,25 @@ var Users = React.createClass({
         });
         var user = this.props.users.map(function(user, index){
             var time = timeDifference(new Date(),new Date(user.timeStamp));
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             if(!user.reggedForSchool){
                 return "";
             }
             if(user.inSchool === true && user.status === true){
                 return <li key={index} className="online"><i className="material-icons checkBoxGreen">location_on</i>
-                <span title={"Kom "+time}>{user.username}</span>
+                <span>{user.username} {isMobile ? " (Kom "+time+")" : ""}</span>
                 </li>;
-
             }
             else if(user.inSchool === true){
                 return <li key={index} className="school"><i className="material-icons checkBoxGreen">location_on</i>
-                <span title={"Kom "+time}>{user.username}</span></li>;
+                <span title={"Kom "+time}>{user.username} {isMobile ? " (Kom "+time+")" : ""}</span></li>;
             }
             else if(user.status === true){
                 return <li key={index} className="online"><i className="material-icons checkBoxRed">location_off</i>
-                <span title={"Gick "+time}>{user.username}</span></li>;
+                <span title={"Gick "+time}>{user.username} {isMobile ? " (Gick "+time+")" : ""}</span></li>;
             }else{
                 return  <li key={index} className="offline"><i className="material-icons checkBoxRed">location_off</i>
-                <span title={"Gick "+time}>{user.username}</span></li>;
+                <span title={"Gick "+time}>{user.username} {isMobile ? " (Kom "+time+")" : ""}</span></li>;
             }
         });
         return(
