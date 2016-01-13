@@ -65,7 +65,7 @@ var Users = React.createClass({
             }
             if(user.inSchool === true && user.status === true){
                 return <li key={index} className="online"><i className="material-icons checkBoxGreen">location_on</i>
-                <span>{user.username} {isMobile ? " (Kom "+time+")" : ""}</span>
+                <span title={"Kom "+time}>{user.username} {isMobile ? " (Kom "+time+")" : ""}</span>
                 </li>;
             }
             else if(user.inSchool === true){
@@ -77,7 +77,7 @@ var Users = React.createClass({
                 <span title={"Gick "+time}>{user.username} {isMobile ? " (Gick "+time+")" : ""}</span></li>;
             }else{
                 return  <li key={index} className="offline"><i className="material-icons checkBoxRed">location_off</i>
-                <span title={"Gick "+time}>{user.username} {isMobile ? " (Kom "+time+")" : ""}</span></li>;
+                <span title={"Gick "+time}>{user.username} {isMobile ? " (Gick "+time+")" : ""}</span></li>;
             }
         });
         return(
