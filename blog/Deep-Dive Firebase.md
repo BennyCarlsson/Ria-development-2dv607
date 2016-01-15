@@ -103,10 +103,13 @@ Keep in mind that this rules are absolute if something is breaking the rules an 
 
 More about setting rules [here](https://www.firebase.com/docs/security/guide/securing-data.html)
 ### Pay Plan
-Even tough Firebase is completely free to use in the beginning
-[Pricing list](https://www.firebase.com/pricing.html)
-### When to use Firebase?
+Even tough Firebase is completely free to use and implement in the beginning it does have a limit and to extend this limit you have to pay and it can get pricy. What you get for free is all documentation, guide, 1GB storage, 10GB Transfer, unlimited authentication for users, 1GB for hosting and 100GB transfer. But you have to pay for a custom domain and private backups. You will get far with what they give you free and you can upgrade whenever you want. But what really does limit you in the beginning is the 100 Connections limit. Only a 100people can be connected to your database at the same time. And for an mobile app or a wep app that is not really much. And you have to pay $49/month before that number increases. Even with the playplan that costs $5/month a month you still only get 100 Connections-
 
+
+[Pricing list](https://www.firebase.com/pricing.html)
+
+### When to use Firebase?
+Firebase should be used if you quickly want a database to store data in and if you don't want to handle it on the server side. It is also great if you want to build crossplatform and keep all your apps updated in realtime! It is easy to get started with and even easier to work with.
 ### Links
 [Firebase 5min getting started tutorial](https://www.firebase.com/tutorial/#gettingstarted)
 
