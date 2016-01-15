@@ -84,8 +84,6 @@ more information about retrieveng data [here](https://www.firebase.com/docs/web/
 
 Firebase also got it's own offline sync which require no extra coding on your part. Before pushing any data to the database it first writes it to it's local version first. If you loose internet connection before or while writing to the database, firebase will automatically sync the data when your internet connection is re-established.
 
-### Authentication
-
 ### Security on Firebase?
 If you use firebase on the client side on your web application your security = null. But luckily you can change this by going to the Security & rules when looking at your database.
 
@@ -99,11 +97,19 @@ By default it looks like this
 }
 ```
 this means anyone can read your data and anyone can write data to your database.
-you can set .read (who can read your data), .write and .valiate
+you can set .read (who can read your data), .write (who can write to your database) and .valiate (what is allowed).
+if read or write is not set it is by default false.
+Keep in mind that this rules are absolute if something is breaking the rules an error will be thrown and returned.
 
+More about setting rules [here](https://www.firebase.com/docs/security/guide/securing-data.html)
 ### Pay Plan
-
+Even tough Firebase is completely free to use in the beginning
+[Pricing list](https://www.firebase.com/pricing.html)
 ### When to use Firebase?
 
 ### Links
 [Firebase 5min getting started tutorial](https://www.firebase.com/tutorial/#gettingstarted)
+
+[Firebase website](https://www.firebase.com/)
+
+[Official guide](https://www.firebase.com/docs/)
