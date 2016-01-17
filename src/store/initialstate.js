@@ -10,5 +10,8 @@ module.exports = {
 	chat: {
 		comments: [],
 		receivedComments: false
+	},
+	userList: {
+		userList: []
 	}
 };

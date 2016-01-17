@@ -4,36 +4,11 @@ var React = require('react'),
     actions = require("../../actions");
 
 var UserList = React.createClass({
-    getInitialState: function(){
-            return{userList: []};
-    },
-    componentWillMount: function(){
-        var myFireBase = new Firebase("https://radiant-heat-4485.firebaseio.com/users");
-		myFireBase.orderByChild("online").on("value", function(snap){
-            var newUsers = [];
-            snap.forEach(function(childSnap){
-                var newUser = childSnap.val();
-                newUsers.push(newUser);
-            }.bind(this));
-
-            newUsers.map(function(user,index){
-                var userRef = new Firebase('https://radiant-heat-4485.firebaseio.com/presence/' + user.uid);
-                userRef.on('value', function(snapshot) {
-                    if(snapshot.val() === true){
-                        user.status = true;
-                    }else{
-                        user.status = false;
-                    }
-                    this.setState({userList: newUsers});
-                }.bind(this));
-            }.bind(this));
-		}.bind(this));
-    },
     render: function(){
         return(
             <div id="schoolList" className="mdl-cell mdl-cell--4-col">
                 <div id="innerSchoolList">
-                    <Users users={this.state.userList}/>
+                    <Users users={this.props.userList.userList}/>
                 </div>
             </div>
         );
@@ -124,7 +99,7 @@ function timeDifference(current, previous) {
 // now we connect the component to the Redux store:
 var mapStateToProps = function(appState){
 	// This component will have access to `appState.auth` through `this.props.auth`
-	return {auth:appState.auth};
+	return {userList:appState.userList,auth:appState.auth};
 };
 
 var mapDispatchToProps = function(dispatch){

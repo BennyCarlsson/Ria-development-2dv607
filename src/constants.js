@@ -21,4 +21,7 @@ module.exports = {
 
 	//CHAT
 	RECEIVING_COMMENTS: "RECEIVING_COMMENTS",
+
+	//userLsit
+	GET_USERS: "GET_USERS"
 };

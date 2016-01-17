@@ -3,11 +3,10 @@ var C = require("../../constants"),
 
 module.exports = function(currentstate,action){
 	switch(action.type){
-		case C.RECEIVING_COMMENTS:
+		case C.GET_USERS:
 		return Object.assign({},currentstate,{
-			comments: action.comments,
-			receivedComments: true
+			userList: action.userList
 		});
-		default: return currentstate || initialState.chat;
+		default: return currentstate || initialState.userList;
 	}
 };

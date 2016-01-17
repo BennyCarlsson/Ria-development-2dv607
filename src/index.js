@@ -18,4 +18,5 @@ ReactDOM.render(
 setTimeout(function(){
 	store.dispatch( actions.startListeningToAuth() );
 	store.dispatch( actions.getComments() );
+	store.dispatch( actions.getUsers() );
 });

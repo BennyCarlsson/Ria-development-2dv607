@@ -1,10 +1,12 @@
 var Redux = require("redux"),
 	authReducer = require("./auth"),
-	chatReducer = require("./chat");
+	chatReducer = require("./chat"),
+	userListReducer = require("./userList");
 
 var rootReducer = Redux.combineReducers({
 	auth: authReducer,
-	chat: chatReducer
+	chat: chatReducer,
+	userList: userListReducer
 });
 
 module.exports = rootReducer;
